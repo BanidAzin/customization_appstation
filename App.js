@@ -10,10 +10,11 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
 import {Router} from './src/navigation/router';
+import {MyTheme} from './src/utilities/themes';
 
 const App = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
       <Router />
     </NavigationContainer>
   );
