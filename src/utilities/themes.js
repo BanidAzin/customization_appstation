@@ -1,11 +1,13 @@
 export const MyTheme = {
   dark: true,
   colors: {
-    primary: 'rgb(255, 45, 85)',
     background: '#0E1114',
     card: '#181D23',
+    shadow: 'rgb(130, 130, 130)',
     text: '#FFFFFF',
     border: 'rgb(199, 199, 204)',
-    notification: 'rgb(255, 69, 58)',
+    button: '#0FC1A1',
+    disabledButton: '#acbfbc',
+    transparent: 'transaprent',
   },
 };

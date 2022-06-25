@@ -1,20 +1,19 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  Image,
-  useWindowDimensions,
-} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, Image, useWindowDimensions} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 
 import {responsiveFontSize} from '../utilities/responsive';
+import {BuildTypeCard, MyButton} from '../components';
 import Intersection_25 from '../assets/Intersection_25.png';
+import BuildTypeBlueIcon from '../assets/BuildTypeBlueIcon.png';
+import BuildTypeRedIcon from '../assets/BuildTypeRedIcon.png';
+import {BUILDTYPES} from '../utilities/contstants';
 
 export const BuildScreen = ({navigation}) => {
   const {colors} = useTheme();
   const {height} = useWindowDimensions();
+
+  const [selectBuildType, setSelectBuildType] = useState();
 
   const HeaderCard = () => {
     return (
@@ -37,7 +36,6 @@ export const BuildScreen = ({navigation}) => {
           <Text
             style={{
               color: colors.text,
-              fontSize: responsiveFontSize(24),
               ...styles.headerCardHeadingText,
             }}>
             CHOOSE TYPE
@@ -54,11 +52,27 @@ export const BuildScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <HeaderCard />
-      <Text>Build Screen</Text>
-      <Button
-        title="Go to custom"
-        onPress={() => navigation.navigate('CUSTOM')}
-      />
+      <View style={styles.typeCardContainer}>
+        <View style={styles.buildTypeCardContainer}>
+          <BuildTypeCard
+            iconSource={BuildTypeBlueIcon}
+            name={BUILDTYPES.standard}
+            onPress={() => setSelectBuildType(BUILDTYPES.standard)}
+            isSelected={selectBuildType === BUILDTYPES.standard}
+          />
+          <BuildTypeCard
+            iconSource={BuildTypeRedIcon}
+            name={BUILDTYPES.custom}
+            onPress={() => setSelectBuildType(BUILDTYPES.custom)}
+            isSelected={selectBuildType === BUILDTYPES.custom}
+          />
+        </View>
+        <MyButton
+          disabled={!selectBuildType}
+          title="VIEW CABANAS"
+          onPress={() => navigation.navigate('CUSTOM')}
+        />
+      </View>
     </View>
   );
 };
@@ -83,11 +97,19 @@ const styles = StyleSheet.create({
   headerCardHeadingText: {
     fontSize: responsiveFontSize(24),
     fontWeight: 'bold',
-    fontStyle: 'italic',
-    paddingBottom: '10%',
+    paddingBottom: '8%',
   },
   headerCardDescriptionText: {
-    fontSize: responsiveFontSize(16),
+    fontSize: responsiveFontSize(20),
     textAlign: 'center',
+  },
+  typeCardContainer: {
+    flex: 1,
+    justifyContent: 'space-evenly',
+    paddingHorizontal: '4%',
+  },
+  buildTypeCardContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
