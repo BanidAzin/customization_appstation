@@ -70,7 +70,9 @@ export const BuildScreen = ({navigation}) => {
         <MyButton
           disabled={!selectBuildType}
           title="VIEW CABANAS"
-          onPress={() => navigation.navigate('CUSTOM')}
+          onPress={() =>
+            navigation.navigate('CUSTOM', {title: selectBuildType})
+          }
         />
       </View>
     </View>
