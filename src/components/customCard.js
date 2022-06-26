@@ -4,9 +4,25 @@ import {useTheme} from '@react-navigation/native';
 
 import {responsiveFontSize} from '../utilities/responsive';
 
-export const CustomCard = ({iconSource, title, description, children}) => {
+export const CustomCard = ({step, title, description, children}) => {
   const {colors} = useTheme();
   const {height} = useWindowDimensions();
+
+  const getImage = () => {
+    switch (step.toString()) {
+      case '1':
+        return require('../assets/Cabana_Size.png');
+      case '2':
+        return require('../assets/Bathroom_Size.png');
+      case '3':
+        return require('../assets/Window_Shutters.png');
+      case '4':
+        return require('../assets/Condition.png');
+
+      default:
+        return;
+    }
+  };
 
   return (
     <View
@@ -19,7 +35,7 @@ export const CustomCard = ({iconSource, title, description, children}) => {
         },
       ]}>
       <View style={styles.topContainer}>
-        <Image source={iconSource} />
+        <Image source={getImage()} />
         <Text
           style={[
             styles.topContainerTitleText,

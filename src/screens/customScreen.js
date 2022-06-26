@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, useWindowDimensions, Image} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {useHeaderHeight} from '@react-navigation/elements';
@@ -10,12 +10,15 @@ import ArrowRight from '../assets/Arrow_Right.png';
 import CabanSize from '../assets/Cabana_Size.png';
 import {CustomCard, MyButton} from '../components';
 import {responsiveFontSize} from '../utilities/responsive';
+import Data from '../utilities/localData.json';
 
 export const CustomScreen = () => {
   const {colors} = useTheme();
   const headerHeight = useHeaderHeight();
   const insets = useSafeAreaInsets();
   const {height} = useWindowDimensions();
+
+  const [step, setStep] = useState(1);
 
   const TitleView = () => {
     return (
@@ -36,21 +39,21 @@ export const CustomScreen = () => {
                   fontSize: responsiveFontSize(22),
                 },
               ]}>
-              CABANA SIZE
+              {Data[step].title}
             </Text>
             <Text
               style={{
                 color: colors.secondaryText,
                 fontSize: responsiveFontSize(22),
               }}>
-              Step 1/4
+              {`Step ${step}/4`}
             </Text>
           </View>
           <Circle
             color={colors.indicator}
             unfilledColor="grey"
             size={height * 0.08}
-            progress={1}
+            progress={step / 4}
             showsText={true}
             borderWidth={0}
             thickness={5}
@@ -61,7 +64,7 @@ export const CustomScreen = () => {
                 fontSize: responsiveFontSize(16),
               },
             ]}
-            formatText={progress => `${1 * 100}%`}
+            formatText={() => `${(step / 4) * 100}%`}
           />
         </View>
       </View>
@@ -87,16 +90,18 @@ export const CustomScreen = () => {
   };
 
   const onMyButtonPress = () => {
-    alert('Hello');
+    if (step <= 3) {
+      setStep(step + 1);
+    }
   };
 
   return (
     <View style={styles.container}>
       <TitleView />
       <CustomCard
-        iconSource={CabanSize}
-        title="CABANA SIZE"
-        description="Eu exercitation in sunt nostrud voluptate.Lorem veniam ullamco enim officia reprehenderit."
+        step={step}
+        title={Data[step].title}
+        description={Data[step].description}
       />
       <MyButton
         onPress={onMyButtonPress}

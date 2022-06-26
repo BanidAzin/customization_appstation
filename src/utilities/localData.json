@@ -1,15 +1,13 @@
 {
-    "stepOne": {
+    "1": {
         "progress": 25,
         "title": "CABANA SIZE",
-        "image": "../assets/Cabana_Size.png",
         "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
         "options": ["length", "width"]
     },
-    "stepTwo": {
+    "2": {
         "progress": 50,
         "title": "BATHROOM SIZE",
-        "image": "../assets/Bathroom_Size.png",
         "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
         "options": [
             {
@@ -26,17 +24,15 @@
             }
         ]
     },
-    "stepThree": {
+    "3": {
         "progress": 75,
         "title": "WINDOW SHUTTERS",
-        "image": "../assets/Window_Shutters.png",
         "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
         "options": ["YES", "NO"]
     },
-    "stepFour": {
+    "4": {
         "progress": 100,
         "title": "CONDITION",
-        "image": "../assets/Condition.png",
         "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
         "options": [
             "(1) TON",
