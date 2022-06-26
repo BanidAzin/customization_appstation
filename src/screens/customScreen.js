@@ -5,10 +5,11 @@ import {useHeaderHeight} from '@react-navigation/elements';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Circle} from 'react-native-progress';
 
-import {responsiveFontSize} from '../utilities/responsive';
 import ArrowLeft from '../assets/Arrow_Left.png';
 import ArrowRight from '../assets/Arrow_Right.png';
+import CabanSize from '../assets/Cabana_Size.png';
 import {CustomCard, MyButton} from '../components';
+import {responsiveFontSize} from '../utilities/responsive';
 
 export const CustomScreen = () => {
   const {colors} = useTheme();
@@ -92,7 +93,11 @@ export const CustomScreen = () => {
   return (
     <View style={styles.container}>
       <TitleView />
-      <CustomCard />
+      <CustomCard
+        iconSource={CabanSize}
+        title="CABANA SIZE"
+        description="Eu exercitation in sunt nostrud voluptate.Lorem veniam ullamco enim officia reprehenderit."
+      />
       <MyButton
         onPress={onMyButtonPress}
         disabled={false}
