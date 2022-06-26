@@ -30,6 +30,7 @@ export const CustomScreen = () => {
   const {height} = useWindowDimensions();
 
   const [step, setStep] = useState(1);
+  const [customisation, setCustomization] = useState();
 
   const TitleView = () => {
     return (
@@ -108,7 +109,14 @@ export const CustomScreen = () => {
 
   const chooseListComponent = () => {
     if (step === 1 || step === 2) {
-      return <RenderSingleColumnList step={step} data={Data[step].options} />;
+      return (
+        <RenderSingleColumnList
+          step={step}
+          data={Data[step].options}
+          customisationState={customisation}
+          onPress={newState => setCustomization(newState)}
+        />
+      );
     } else {
       return <RenderMultipleColumnList step={step} data={Data[step].options} />;
     }
