@@ -11,12 +11,12 @@ export const Router = () => {
       screenOptions={{
         headerTransparent: true,
       }}>
-      <Stack.Screen name="BUILD" component={BuildScreen} />
       <Stack.Screen
         name="CUSTOM"
         component={CustomScreen}
-        options={({route}) => ({title: route.params.title})}
+        // options={({route}) => ({title: route.params.title ?? 'CUSTOM'})}
       />
+      <Stack.Screen name="BUILD" component={BuildScreen} />
     </Stack.Navigator>
   );
 };
