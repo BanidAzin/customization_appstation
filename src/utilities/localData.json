@@ -4,8 +4,8 @@
         "title": "CABANA SIZE",
         "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
         "options": [
-            {"id": 1, "value": "length"},
-            {"id": 2, "value": "width"}
+            {"id": 1, "value": "Length"},
+            {"id": 2, "value": "Width"}
         ]
     },
     "2": {

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  FlatList,
+  TextInput,
   TouchableWithoutFeedback,
 } from 'react-native';
 import {useTheme} from '@react-navigation/native';
@@ -18,6 +18,9 @@ export const RenderSingleColumnList = ({
   onPress,
 }) => {
   const {colors} = useTheme();
+
+  const LengthInputRef = useRef();
+  const WidthInputRef = useRef();
 
   const BathroomSizeOptions = ({item}) => {
     return (
@@ -64,11 +67,64 @@ export const RenderSingleColumnList = ({
     );
   };
 
+  const CabanaSizeOptions = ({item}) => {
+    return (
+      <TouchableWithoutFeedback
+        onPress={() =>
+          item.value === 'Length'
+            ? LengthInputRef.current.focus()
+            : WidthInputRef.current.focus()
+        }>
+        <View
+          style={[
+            styles.cabanaSizeOptionsContainer,
+            {
+              backgroundColor: colors.background,
+              borderColor: colors.selctedItemBorder,
+            },
+          ]}>
+          <Text
+            style={[
+              styles.cabanaSizeText,
+              {
+                color: colors.secondaryText,
+                fontSize: responsiveFontSize(18),
+              },
+            ]}>
+            {item.value}
+          </Text>
+          <TextInput
+            ref={item.value === 'Length' ? LengthInputRef : WidthInputRef}
+            defaultValue={item.value === 'Length' ? '3.5' : '6'}
+            value={customisationState?.cabana?.[item.value]}
+            onChangeText={text => {
+              console.log(text);
+              // onPress({
+              //   ...customisationState,
+              //   cabana: {
+              //     ...customisationState.cabana,
+              //     [item.value]: text,
+              //   },
+              // })
+            }}
+            style={[
+              styles.cabanaSizeTextInput,
+              {
+                color: colors.text,
+                fontSize: responsiveFontSize(20),
+              },
+            ]}
+          />
+        </View>
+      </TouchableWithoutFeedback>
+    );
+  };
+
   return (
     <View style={styles.container}>
       {step === 1 &&
         data.map(item => {
-          return <BathroomSizeOptions key={item.id} item={item} />;
+          return <CabanaSizeOptions key={item.id} item={item} />;
         })}
       {step === 2 &&
         data.map(item => {
@@ -97,5 +153,21 @@ const styles = StyleSheet.create({
   },
   bathroomSizeOptionsRadioContainer: {
     alignSelf: 'center',
+  },
+  cabanaSizeOptionsContainer: {
+    marginVertical: '3%',
+    paddingVertical: '3%',
+    paddingHorizontal: '5%',
+    justifyContent: 'space-between',
+    borderRadius: 5,
+    borderWidth: 1,
+  },
+  cabanaSizeText: {
+    paddingBottom: '2%',
+  },
+  cabanaSizeTextInput: {
+    flexGrow: 1,
+    fontWeight: '500',
+    width: '80%',
   },
 });

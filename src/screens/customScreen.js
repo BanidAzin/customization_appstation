@@ -1,12 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  useWindowDimensions,
-  Image,
-  FlatList,
-} from 'react-native';
+import {View, Text, StyleSheet, useWindowDimensions, Image} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {useHeaderHeight} from '@react-navigation/elements';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
