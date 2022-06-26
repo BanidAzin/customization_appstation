@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  useWindowDimensions,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StyleSheet, useWindowDimensions, Image} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {useHeaderHeight} from '@react-navigation/elements';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -15,7 +8,7 @@ import {Circle} from 'react-native-progress';
 import {responsiveFontSize} from '../utilities/responsive';
 import ArrowLeft from '../assets/Arrow_Left.png';
 import ArrowRight from '../assets/Arrow_Right.png';
-import {MyButton} from '../components';
+import {CustomCard, MyButton} from '../components';
 
 export const CustomScreen = () => {
   const {colors} = useTheme();
@@ -99,9 +92,7 @@ export const CustomScreen = () => {
   return (
     <View style={styles.container}>
       <TitleView />
-      <View style={{backgroundColor: colors.card, flex: 1}}>
-        <Text style={{color: colors.text}}></Text>
-      </View>
+      <CustomCard />
       <MyButton
         onPress={onMyButtonPress}
         disabled={false}
@@ -109,7 +100,7 @@ export const CustomScreen = () => {
           styles.myButtonStyle,
           {
             paddingBottom: insets.bottom,
-            height: height * 0.1,
+            height: height * 0.11,
           },
         ]}>
         <MyButtonTitle />
@@ -141,6 +132,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   myButtonStyle: {
+    marginTop: -15,
     justifyContent: 'flex-end',
     borderRadius: 0,
   },
