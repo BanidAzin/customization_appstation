@@ -64,26 +64,16 @@ export const RenderSingleColumnList = ({
     );
   };
 
-  const renderItem = ({item}) => {
-    switch (step) {
-      case 1:
-        return <BathroomSizeOptions item={item} />;
-      case 2:
-        return <BathroomSizeOptions item={item} />;
-      default:
-        return;
-    }
-  };
-
   return (
     <View style={styles.container}>
-      <FlatList
-        data={data}
-        keyExtractor={item => item.id}
-        renderItem={renderItem}
-        scrollEnabled={false}
-        showsVerticalScrollIndicator={false}
-      />
+      {step === 1 &&
+        data.map(item => {
+          return <BathroomSizeOptions key={item.id} item={item} />;
+        })}
+      {step === 2 &&
+        data.map(item => {
+          return <BathroomSizeOptions key={item.id} item={item} />;
+        })}
     </View>
   );
 };

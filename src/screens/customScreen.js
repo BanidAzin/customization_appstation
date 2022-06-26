@@ -118,7 +118,14 @@ export const CustomScreen = () => {
         />
       );
     } else {
-      return <RenderMultipleColumnList step={step} data={Data[step].options} />;
+      return (
+        <RenderMultipleColumnList
+          step={step}
+          data={Data[step].options}
+          customisationState={customisation}
+          onPress={newState => setCustomization(newState)}
+        />
+      );
     }
   };
 

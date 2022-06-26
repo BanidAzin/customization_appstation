@@ -7,6 +7,7 @@ export const MyTheme = {
     text: '#FFFFFF',
     secondaryText: '#0FC1A1',
     border: 'rgb(199, 199, 204)',
+    selctedItemBorder: '#0FC1A1',
     button: '#0FC1A1',
     disabledButton: '#acbfbc',
     indicator: '#FFB300',
