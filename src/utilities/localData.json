@@ -1,0 +1,51 @@
+{
+    "stepOne": {
+        "progress": 25,
+        "title": "CABANA SIZE",
+        "image": "../assets/Cabana_Size.png",
+        "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
+        "options": ["length", "width"]
+    },
+    "stepTwo": {
+        "progress": 50,
+        "title": "BATHROOM SIZE",
+        "image": "../assets/Bathroom_Size.png",
+        "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
+        "options": [
+            {
+                "name": "STANDARD",
+                "value": "160 x 160 CM"
+            },
+            {
+                "name": "MEDIUM",
+                "value": "180 x 180 CM"
+            },
+            {
+                "name": "LARGE SIZE",
+                "value": "200 x 200 CM"
+            }
+        ]
+    },
+    "stepThree": {
+        "progress": 75,
+        "title": "WINDOW SHUTTERS",
+        "image": "../assets/Window_Shutters.png",
+        "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
+        "options": ["YES", "NO"]
+    },
+    "stepFour": {
+        "progress": 100,
+        "title": "CONDITION",
+        "image": "../assets/Condition.png",
+        "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
+        "options": [
+            "(1) TON",
+            "(1) TON",
+            "(2) TON",
+            "(1) TON X 2",
+            "(2,5) TON",
+            "(2) TON X 2",
+            "WITHOUT"
+        ]
+    }
+}
