@@ -8,7 +8,13 @@ import {
 import {useTheme} from '@react-navigation/native';
 import {responsiveFontSize} from '../utilities/responsive';
 
-export const MyButton = ({title, onPress, disabled = true}) => {
+export const MyButton = ({
+  title,
+  onPress,
+  disabled = true,
+  style = {},
+  children,
+}) => {
   const {colors} = useTheme();
   const {height} = useWindowDimensions();
 
@@ -22,9 +28,11 @@ export const MyButton = ({title, onPress, disabled = true}) => {
           height: height * 0.07,
           borderRadius: height * 0.01,
         },
+        style,
       ]}
       onPress={onPress}>
-      <Text style={styles.title}>{title}</Text>
+      {title && <Text style={styles.title}>{title}</Text>}
+      {children}
     </TouchableOpacity>
   );
 };

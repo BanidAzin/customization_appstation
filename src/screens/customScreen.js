@@ -1,11 +1,21 @@
 import React from 'react';
-import {View, Text, StyleSheet, useWindowDimensions} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  useWindowDimensions,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {useHeaderHeight} from '@react-navigation/elements';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Circle} from 'react-native-progress';
 
 import {responsiveFontSize} from '../utilities/responsive';
+import ArrowLeft from '../assets/Arrow_Left.png';
+import ArrowRight from '../assets/Arrow_Right.png';
+import {MyButton} from '../components';
 
 export const CustomScreen = () => {
   const {colors} = useTheme();
@@ -64,9 +74,46 @@ export const CustomScreen = () => {
     );
   };
 
+  const MyButtonTitle = () => {
+    return (
+      <View style={styles.myButtonTitleContainer}>
+        <Image source={ArrowRight} />
+        <Text
+          style={[
+            styles.myButtonTitleText,
+            {
+              fontSize: responsiveFontSize(23),
+            },
+          ]}>
+          NEXT
+        </Text>
+        <Image source={ArrowLeft} />
+      </View>
+    );
+  };
+
+  const onMyButtonPress = () => {
+    alert('Hello');
+  };
+
   return (
     <View style={styles.container}>
       <TitleView />
+      <View style={{backgroundColor: colors.card, flex: 1}}>
+        <Text style={{color: colors.text}}></Text>
+      </View>
+      <MyButton
+        onPress={onMyButtonPress}
+        disabled={false}
+        style={[
+          styles.myButtonStyle,
+          {
+            paddingBottom: insets.bottom,
+            height: height * 0.1,
+          },
+        ]}>
+        <MyButtonTitle />
+      </MyButton>
     </View>
   );
 };
@@ -78,7 +125,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     paddingHorizontal: '5%',
     justifyContent: 'center',
-    paddingBottom: '5%',
+    paddingBottom: '10%',
   },
   titleChildrensContainer: {
     flexDirection: 'row',
@@ -92,5 +139,18 @@ const styles = StyleSheet.create({
   },
   titleprogressText: {
     fontWeight: '500',
+  },
+  myButtonStyle: {
+    justifyContent: 'flex-end',
+    borderRadius: 0,
+  },
+  myButtonTitleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  myButtonTitleText: {
+    fontWeight: 'bold',
+    paddingHorizontal: '4%',
   },
 });
