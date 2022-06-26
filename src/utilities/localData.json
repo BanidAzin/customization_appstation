@@ -3,7 +3,10 @@
         "progress": 25,
         "title": "CABANA SIZE",
         "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
-        "options": ["length", "width"]
+        "options": [
+            {"id": 1, "value": "length"},
+            {"id": 2, "value": "width"}
+        ]
     },
     "2": {
         "progress": 50,
@@ -11,14 +14,17 @@
         "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
         "options": [
             {
+                "id": 1,
                 "name": "STANDARD",
                 "value": "160 x 160 CM"
             },
             {
+                "id": 2,
                 "name": "MEDIUM",
                 "value": "180 x 180 CM"
             },
             {
+                "id": 3,
                 "name": "LARGE SIZE",
                 "value": "200 x 200 CM"
             }
@@ -28,20 +34,23 @@
         "progress": 75,
         "title": "WINDOW SHUTTERS",
         "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
-        "options": ["YES", "NO"]
+        "options": [
+            {"id": 1, "value": "YES", "description": "With Shutters"},
+            {"id": 2, "value": "NO", "description": "Without Shutters"}
+        ]
     },
     "4": {
         "progress": 100,
         "title": "CONDITION",
         "description": "Lorem Ipsum Dolor Sit Amet, Consetetur Elitr, Sed Diam",
         "options": [
-            "(1) TON",
-            "(1) TON",
-            "(2) TON",
-            "(1) TON X 2",
-            "(2,5) TON",
-            "(2) TON X 2",
-            "WITHOUT"
+            {"id": 1, "value": "(1) TON"},
+            {"id": 2, "value": "(1) TON"},
+            {"id": 3, "value": "(2) TON"},
+            {"id": 4, "value": "(1) TON X 2"},
+            {"id": 5, "value": "(2,5) TON"},
+            {"id": 6, "value": "(2) TON X 2"},
+            {"id": 7, "value": "WITHOUT"}
         ]
     }
 }

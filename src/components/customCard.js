@@ -9,14 +9,14 @@ export const CustomCard = ({step, title, description, children}) => {
   const {height} = useWindowDimensions();
 
   const getImage = () => {
-    switch (step.toString()) {
-      case '1':
+    switch (step) {
+      case 1:
         return require('../assets/Cabana_Size.png');
-      case '2':
+      case 2:
         return require('../assets/Bathroom_Size.png');
-      case '3':
+      case 3:
         return require('../assets/Window_Shutters.png');
-      case '4':
+      case 4:
         return require('../assets/Condition.png');
 
       default:
@@ -70,7 +70,8 @@ const styles = StyleSheet.create({
     paddingTop: '5%',
   },
   topContainer: {
-    minHeight: '30%',
+    flexGrow: 1,
+    maxHeight: '45%',
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
@@ -81,8 +82,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   optionsContainer: {
-    flex: 1,
+    flexGrow: 1,
     alignItems: 'center',
-    paddingTop: '8%',
+    paddingTop: '5%',
   },
 });

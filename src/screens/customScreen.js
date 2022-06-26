@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, useWindowDimensions, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  useWindowDimensions,
+  Image,
+  FlatList,
+} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {useHeaderHeight} from '@react-navigation/elements';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -7,8 +14,12 @@ import {Circle} from 'react-native-progress';
 
 import ArrowLeft from '../assets/Arrow_Left.png';
 import ArrowRight from '../assets/Arrow_Right.png';
-import CabanSize from '../assets/Cabana_Size.png';
-import {CustomCard, MyButton} from '../components';
+import {
+  CustomCard,
+  MyButton,
+  RenderSingleColumnList,
+  RenderMultipleColumnList,
+} from '../components';
 import {responsiveFontSize} from '../utilities/responsive';
 import Data from '../utilities/localData.json';
 
@@ -95,14 +106,23 @@ export const CustomScreen = () => {
     }
   };
 
+  const chooseListComponent = () => {
+    if (step === 1 || step === 2) {
+      return <RenderSingleColumnList step={step} data={Data[step].options} />;
+    } else {
+      return <RenderMultipleColumnList step={step} data={Data[step].options} />;
+    }
+  };
+
   return (
     <View style={styles.container}>
       <TitleView />
       <CustomCard
         step={step}
         title={Data[step].title}
-        description={Data[step].description}
-      />
+        description={Data[step].description}>
+        {chooseListComponent()}
+      </CustomCard>
       <MyButton
         onPress={onMyButtonPress}
         disabled={false}
